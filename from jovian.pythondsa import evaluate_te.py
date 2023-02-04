@@ -1,4 +1,4 @@
-from jovian.pythondsa import evaluate_test_cases
+from jovian.pythondsa import evaluate_test_case
 
 #                                                                                                  LINEAR SEARCH / BRUTE SEARCH
 
@@ -116,7 +116,7 @@ tests.append({
         'cards': [8, 8, 6, 6, 6, 6, 3, 2, 2, 2, 0, 0, 0],
         'query': 3
     },
-    'output': 6
+    'output': 7
 })
 
 # 8. REPEATING QUERY NUMBERS
@@ -132,7 +132,6 @@ tests.append({
 # 3.                             COME UP WITH CORRECT SOLUTIONS IN PLAIN ENGLISH.
 
 # 1. CREATE A VARIABLE POSITION 0
-# 2a. check if cards length greaterthan zero
 # 2. CHECK IF NUMBER INDEX POSITION EQUALS query
 # 3. IF IT DOES.. RETURN POSITION NUMBER ELSE
 # 4. INCREMENT THE VALUE OF POSITION BY 1 AND REPEAT STEPS 2 TO 5 TILL WE REACH THE LAST POSITION
@@ -144,21 +143,20 @@ tests.append({
 def locate_card(cards, query):
     # 1. CREATE A VARIABLE POSITION 0
     position = 0
-    # 2a. check if cards length greater than zero
-    while position < len(cards) :
-        # 2. CHECK IF NUMBER INDEX POSITION EQUALS query
+
+    # 2. CHECK IF NUMBER INDEX POSITION EQUALS query
+    while True:
         if cards[position] == query:
+
             # 3. IF IT DOES.. RETURN POSITION NUMBER ELSE
             return position
+
         # 4. INCREMENT THE VALUE OF POSITION BY 1 AND REPEAT STEPS 2 TO 5 TILL WE REACH THE LAST POSITION
         position = position + 1
+
         # 5. IF THE NUMBER NOT FOUND and we reached the end of card, RETURN -1.
-    return -1
+        if position == len(cards):
+            return -1
 
 
-evaluate_test_cases(locate_card, tests)
-
-
-# 5.                                    ANALYZE THE ALGORITHM COMPLEXITY AND IDNTIFY INEFFICIENCIES. IF ANY.
-
-# 6.                                     APPLY THE RIGHT TECHNIQUE TO OVERCOME THE INEFFICIENCY. REPEAT STEPS 3 TO 6
+evaluate_test_case(locate_card, test)
