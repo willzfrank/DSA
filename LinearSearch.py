@@ -145,7 +145,7 @@ def locate_card(cards, query):
     # 1. CREATE A VARIABLE POSITION 0
     position = 0
     # 2a. check if cards length greater than zero
-    while position < len(cards) :
+    while position < len(cards):
         # 2. CHECK IF NUMBER INDEX POSITION EQUALS query
         if cards[position] == query:
             # 3. IF IT DOES.. RETURN POSITION NUMBER ELSE
@@ -156,9 +156,40 @@ def locate_card(cards, query):
     return -1
 
 
-evaluate_test_cases(locate_card, tests)
-
+# evaluate_test_cases(locate_card, tests)
 
 # 5.                                    ANALYZE THE ALGORITHM COMPLEXITY AND IDNTIFY INEFFICIENCIES. IF ANY.
 
 # 6.                                     APPLY THE RIGHT TECHNIQUE TO OVERCOME THE INEFFICIENCY. REPEAT STEPS 3 TO 6
+
+# To find the inefficiency we use binary search.
+# 1. FIND THE MIDDLE ELEMENT OF THE LIST.
+# 2. IF IT MATCHES QUERIED NUMBER, RETURN THE MIDDLE POSITION AS THE ANSWER.
+# 3. IF IT IS LESS THAN THE QUERIED NUMBER, THEN SEARCH THE FIRST HALF OF THE LIST.
+# 4. IF IT IS GREATER THAN THE QUERIED NUMBER, THEN SEARCH THE SECOND HALF OF THE LIST.
+# 5. IF NO MORE ELEMENTS REMAIN, RETURN -1
+
+#                                                                                                   SOLUTION
+
+
+def locate_binary_card(cards, query):
+    lo = 0
+    hi = len(cards) - 1
+
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        mid_number = cards[mid]
+
+        print('lo :', lo, 'hi :', hi, 'mid :', mid, 'mid_number :', mid_number,
+              'query :', query)
+
+        if mid_number == query:
+            return mid
+        elif mid_number < query:
+            hi = mid - 1
+        elif mid_number > query:
+            lo = mid + 1
+    return -1
+
+
+evaluate_test_cases(locate_binary_card, tests)
