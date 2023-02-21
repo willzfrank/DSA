@@ -54,7 +54,7 @@ test = {
 
 output = test['output']
 
-# locate_card(**test['input']) == test['output']
+#  locate_card(**test['input']) == test['output']
 
 #                                                                                VARIATIONS TO ENCOUNTER
 
